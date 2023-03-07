@@ -9,15 +9,15 @@ class PetFriends:
     def get_api_key(self, email, password):
         """Метод делает запрос к API сервера и возвращает статус запроса и результат в формате
                 JSON с уникальным ключем пользователя, найденного по указанным email и паролем"""
-            headers = {'email': email, 'password': password}
-            res = requests.get(self.base_url+'/api/key', headers=headers)
-            status = res.status_code
-            result = ""
-            try:
+        headers = {'email': email, 'password': password}
+        res = requests.get(self.base_url+'/api/key', headers=headers)
+        status = res.status_code
+        result = ""
+        try:
                 result = res.json()
-            except:
+        except:
                 result = res.text
-            return status, result
+        return status, result
 
     def get_list_of_pets(self, auth_key, filter):
         """Метод делает запрос к API сервера и возвращает статус запроса и результат в формате JSON
